@@ -1,0 +1,363 @@
+<html><link href="assets/css/bootstrap.css" tppabs="http://www.aksoherb.com/webim/assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/bootstrap-responsive.css" tppabs="http://www.aksoherb.com/webim/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="assets/css/docs.css" tppabs="http://www.aksoherb.com/webim/assets/css/docs.css" rel="stylesheet">
+<style type="text/css">
+    @media (max-width: 780px){
+        body {
+             padding-right: 0px;
+             padding-left: 0px;
+        }
+        .navbar-fixed-top,
+        .navbar-fixed-bottom,
+        .navbar-static-top {
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+    }
+    .navbar .brand{
+        float: left;
+        color: #eeeeee;
+        margin-left: 0px;
+    }
+    .navbar-inverse .brand {
+        color: #eeeeee;
+    }
+    .nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus{
+        /*background-color: #fe3c23;*/
+        background-color: #0044cc;
+    }
+    .nav > li > a{
+        color: #000000;
+    }
+    .navbar-inverse .navbar-inner{
+        /*border-color: #fe3c23;*/
+        /*background-image: linear-gradient(to bottom, #fe3c23, #fe3c23);*/
+        /*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fe3c23), to(#fe3c23));*/
+        /*background-image: -webkit-linear-gradient(top, #fe3c23, #fe3c23);*/
+        /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffe3c23', endColorstr='#fffe3c23', GradientType=0); BACKGROUND-COLOR: #fe3c23;*/
+        border-color: #0044cc;
+        background-image: linear-gradient(to bottom, #0044cc, #0044cc);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0044cc), to(#0044cc));
+        background-image: -webkit-linear-gradient(top, #0044cc, #0044cc);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0044cc', endColorstr='#ff0044cc', GradientType=0); BACKGROUND-COLOR: #0044cc;
+    }
+    .nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus{
+        /*background-color: #fe3c23;*/
+        background-color: #0044cc;
+    }
+    .nav-tabs > li > a, .nav-pills > li > a{
+        /*color: #fe3c23;*/
+    }
+    .hero-unit {
+        /*background-color: #fcf8e3;*/
+        background-color: #eee;
+        /*padding-top: 60px;
+        padding-bottom: 30px;
+        padding-left: 60px;
+        padding-right: 60px;
+        margin-bottom: 0px;
+        margin-top: 20px;*/
+    }
+    .scrollspy-contact-example{
+        height: 330px;
+        /*max-height: 330px;*/
+        /*min-height: 330px;*/
+        overflow: auto;
+        position: relative;
+        /*margin-bottom: 10px;*/
+    }
+    .scrollspy-content-example{
+        height: 360px;
+        /*max-height: 360px;*/
+        /*min-height: 360px;*/
+        overflow: auto;
+        position: relative;
+        /*margin-top: 12px;*/
+        margin-bottom: 0px;
+        border-bottom:1px solid #ccc;
+    }
+    .alert{
+        word-break:break-all;
+
+        margin-top: 6px;
+        margin-bottom: 6px;
+        clear:both;
+    }
+    .alert-right{
+        float: right;
+        padding:0 10px ;
+		margin:0 0 20px 0;
+    }
+    .alert-left{
+        float: left;
+          padding: 0 10px;
+         margin: 0 0 10px 0
+    }
+    div code{
+        font-size:14px;
+        font-family: Arial, sans-serif;
+    }
+    .modal-body div{
+        height: 30px;
+        padding-bottom: 6px;
+    }
+    #pop .table-striped{
+        margin-bottom: 0px;
+    }
+    #pop .table-striped td{
+         border-left: 0px solid #dddddd;
+     }
+    #pop .label{
+        margin-left:10px;
+        cursor:pointer;
+        line-height:18px;
+    }
+    .emoji-img {
+        width: 18px;
+        height: 18px;
+    }
+    #im_send_content_copy{
+        display: none;
+    }
+    #im_send_content{
+        background-color:white;
+        height:87px;
+        max-width:750px;
+        font-size:14px;
+        font-family:Arial, sans-serif;
+        margin:0 0 0 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-radius:0px;
+		  padding-top: 8px;
+        outline: none;
+    }
+    #im_content_list pre{
+        font-size:12px;
+        font-family: Arial, sans-serif;
+        border: none;
+        background: none;
+        margin:0 0 0 0;
+        clear:both;
+        border:1px solid #ccc;
+        margin-left:5px;
+		padding:2px 8px;
+    }
+    .span_4_bg{background-color:#fff;/*m
+     argin-top:12px;*/font-family:Arial, Helvetica, sans-serif;font-size:14px;}
+
+    .pan4_maximg img{max-width:140px;max-height:100px;}
+    .pan4_maximg{text-align:center; display:table-cell;width:140px;height:100px; vertical-align:middle;border:1px solid #dedede;}
+    .pan4_one{padding-left: 0;margin-right: 15px;line-height: 16px;font-size: 12px;width: 170px;margin-top: 5px;margin-left:-15px;}
+    .pan4_one a{color:#004484;}
+    .pan4_one a:hover{text-decoration:underline;font-weight:normal;}
+    .pan4_tit{margin-top:15px;line-height:20px;padding-left:15px;margin-right:15px;color:#555;font-weight:normal;}
+    .pan4_tits{line-height:20px;padding-left:15px;margin-right:15px;color:#06c;font-weight:normal;}
+    .tab1{cursor:pointer;padding:4px 0px;background-color:#c4def8;}
+    .pan4_titss{color:#333;line-height:20px;padding:5px 0px;padding-left:15px;margin-right:15px;font-weight:normal;}
+    .span2_cur{background-color:#fff;margin-left:0;font-weight:bold;}
+    .blues{color:#0064CA;}
+
+
+    .box-wrap{width:256px;height:82px;border:1px solid #dcdcdc;border-radius:5px;font-size:14px;color:#333;box-sizing:border-box;padding:10px 10px 10px 83px;font-family:"黑体";}
+    .p-one{line-height: 1.2em;margin-bottom:0;}
+    .p-two{padding-top:5px;}
+    .box-wrap .imgattch_box{width:60px;height:60px;background:#fff;float: left;margin:0 0 0 -70px;}
+    .box-wrap img{max-width: 60px; width:60px\9;max-height: 60px;  }
+    .alert-left .header_icon,.alert-right .header_icon{display:none;}
+    #im_content_list .ownspeak{margin-top:0;}
+</style>
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<!--<script src="assets/js/html5shiv.js"></script>-->
+<!--[endif]-->
+<script src="../js/jquery.js" tppabs="http://www.aksoherb.com/js/jquery.js"></script>
+<script src="webim_sdk.js" tppabs="http://www.aksoherb.com/webim/webim_sdk.js"></script>
+<script src="yunwebim.js" tppabs="http://www.aksoherb.com/webim/yunwebim.js"></script>
+<script src="base64.min.js" tppabs="http://www.aksoherb.com/webim/base64.min.js"></script>
+<script src="md5.js" tppabs="http://www.aksoherb.com/webim/md5.js"></script>
+<script src="emoji.js" tppabs="http://www.aksoherb.com/webim/emoji.js"></script>
+<link href="css/emoji.css" tppabs="http://www.aksoherb.com/webim/css/emoji.css" rel="stylesheet">
+
+<!-- Fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png" tppabs="http://www.aksoherb.com/webim/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png" tppabs="http://www.aksoherb.com/webim/assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png" tppabs="http://www.aksoherb.com/webim/assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png" tppabs="http://www.aksoherb.com/webim/assets/ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="assets/ico/favicon.png" tppabs="http://www.aksoherb.com/webim/assets/ico/favicon.png">
+
+
+<body id="im_body1" style="overflow-x: hidden; overflow-y: auto; height: 500px;" onkeydown="IM.EV_keyCode(event)">
+    <div id="im_body" style="overflow: hidden;">
+        <!--<body>-->
+        <div id="navbar" class="navbar navbar-inverse navbar-fixed-top" style="z-index: 999999;display:none;">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span><audio id="im_ring" src="ring.mp3" tppabs="http://www.aksoherb.com/webim/ring.mp3"></audio></span>
+                    <a class="brand" href="#">云通讯 IM</a>
+                    <div id="navbar_login" class="nav-collapse in collapse" style="height: auto;">
+                        <div class="navbar-form pull-right">
+                            <input id='navbar_user_account' style="width:160px" type="text" placeholder="Your Phone Number">
+                            <input class="btn" type="button" onClick="IM.DO_login()" value="登录" />
+                        </div>
+                    </div>
+                    <div id="navbar_login_show" class="nav-collapse in collapse" style="display:none; height: auto; float: right;">
+                                <a imtype="navbar_login_show" class="brand" style="color: #eeeeee;" href="#">您好</a>
+                                <a class="brand" href="#" style="color: #eeeeee;" onClick="IM.EV_logout()">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="hero-unit" class="hero-unit">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <div style="z-index: 778888; position: relative; left: 0px; top: 0px; display: none;">
+                            <div id="alert-error" class="alert alert-error text-center" style="display: none;">
+                                <button type="button" class="close" data-dismiss="alert" onClick="IM.HTML_closeAlert('alert-error')">×</button>
+                                <strong id="alert-error_content">Oh snap!...</strong>
+                            </div>
+                            <div id="alert-info" class="alert alert-info text-center" style="display: none;">
+                                <button type="button" class="close" data-dismiss="alert" onClick="IM.HTML_closeAlert('alert-info')">×</button>
+                                <strong id="alert-info_content">Oh snap!...</strong>
+                            </div>
+                            <div id="alert-warning" class="alert alert-warning text-center" style="display: none;">
+                                <button type="button" class="close" data-dismiss="alert" onClick="IM.HTML_closeAlert('alert-warning')">×</button>
+                                <strong id="alert-warning_content">Oh snap!...</strong>
+                            </div>
+                            <div id="alert-success" class="alert alert-success text-center" style="display: none;">
+                                <button type="button" class="close" data-dismiss="alert" onClick="IM.HTML_closeAlert('alert-success')">×</button>
+                                <strong id="alert-success_content">Oh snap!...</strong>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="span8">
+                                <div class="row">
+                                    <div class="span8">
+                                        <div id="im_content_list" data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-content-example" style="background-color: white;padding-bottom:37px;height:260px;">
+                                            <div class="alert alert-left alert-info" style="display:block">
+                                                <pre msgtype="content" class="welcome"><span id="chatnow_welcome">Welcome to our website!</span></pre>
+                                            </div>
+                                        <div style="text-align:center;padding:10px 0px;"><?php echo date('m-d H:i');?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="span8">
+                                        <div class="input-append span8" style="position: relative; margin:0 0 0px 0;background-color:#eee;">
+                                            <div class="row">
+                                                <div class="span8">
+                                                    <div id="emoji_div" class="span8 popover top" style="display:none; top: -140px; max-width: 750px; margin-left: 5px;">
+                                                        <div class="arrow"></div>
+                                                        <div class="popover-content" style="max-height: 120px; font-size:18px; overflow-y: auto">
+                                                        </div>
+                                                    </div>
+                                                    <span style="position:absolute; right: 0px;top:0px;">
+                                                        <button id="sendmsgBtn_send" hidden>Send</button>
+                                                        <button id="sendmsgBtn_connecting" hidden>Connecting</button>
+                                                        <button id="sendmsgBtn" style="background:#666;color:#fff; border:none;height:30px; border-radius: 0;font-family:Arial, Helvetica, sans-serif" class="btn" type="button" onClick="IM.DO_sendMsg()" disabled>Connecting</button>
+                                                    </span>
+
+
+                                                    <button type="button" name="im_image_file" id="im_image_file" style="width:35px;height:30px;margin: 0 auto;border:none;border-right:1px solid #ccc;border-left:1px solid #ccc;outline:none;background: url('assets/img/upimg.png')/*tpa=http://www.aksoherb.com/webim/assets/img/upimg.png*/ no-repeat 7px 7px" onClick="IM.DO_im_image_file()"></button>
+                                                        <button type="button" name="im_attachment_file" id="im_attachment_file" style="width:35px;height:30px;border:none;border-right:1px solid #ccc;margin: 0 auto;outline:none;background: url('assets/img/upfile.png')/*tpa=http://www.aksoherb.com/webim/assets/img/upfile.png*/ no-repeat 7px 7px" onClick="IM.DO_im_attachment_file()"></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="span8">
+                                        <pre id="im_send_content" contenteditable="true"></pre>
+                                        <pre id="im_send_content_copy"></pre>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:2px;">
+                                    <div class="span8">
+                                        <div class="input-append span8" style="position: relative; margin:0 0 2px 0;">
+                                            <div class="row">
+                                                <div class="span8">
+                                                    <div id="emoji_div" class="span8 popover top" style="display:none; top: -140px; max-width: 750px; margin-left: 5px;">
+                                                        <div class="arrow"></div>
+                                                        <div class="popover-content" style="max-height: 120px; font-size:18px; overflow-y: auto">
+                                                        </div>
+                                                    </div>
+                                                    <input type="hide" name="im_image_file" id="im_image_file" style="display:none;margin: 0 auto;" onClick="IM.DO_im_image_file()">
+                                                    <input type="hide" name="im_attachment_file" id="im_attachment_file" style="display:none;margin: 0 auto;" onClick="IM.DO_im_attachment_file()">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--right start-->
+                            <div class="span4" style="margin:0px;">
+                                <div class="span_4_bg" style="margin-left:1px;">
+                                    <div id="im_contact" data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-contact-example" style="background-color: white;margin:0px;padding:0px;padding-bottom:94px;">
+                                    <ul style="margin:0 0 0 15px;padding:0px;" class="nav nav-list">
+                                    <div class="span2 tab1 span2_cur"><span id="chatnow_product">Product</span></div>
+                                    <div class="span4 tab2" style="margin:0 0 0 15px;padding:0px;">
+                                        <div class="pan4_maximg"><img id="pimg"></div>
+                                        <div class="pan4_one" ><a id="pname" href="#"></a></div>
+                                    </div>
+                                    </ul>
+                                	</div>
+                                </div>
+                            </div>
+                            <script>
+							$(function(){
+								var $div_li =$(".tab1");
+								$div_li.click(function(){
+									$(this).addClass("span2_cur").siblings(".tab1").removeClass("span2_cur");
+									var index_tab=$div_li.index(this);
+									$(".tab2").eq(index_tab).show().siblings(".tab2").hide();
+									})
+
+								})
+							</script>
+                            <!--right end-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div id="lvjing" style="background-color: #999999; z-index: 1; position: relative; left: 0px; top: 0px; height: 0px; width: 0px;" ></div>-->
+        <div id="lvjing" style="display: block; z-index: 668888; position: absolute; margin-left: 0px; padding-left: 0px; left: 0px; top: 0px; height: 0px; width: 0px;">
+            <canvas id="lvjing_canvas"></canvas>
+            <img style="display: block;position: absolute; top:0px; left:0px;" src="assets/img/logo-blue.png" tppabs="http://www.aksoherb.com/webim/assets/img/logo-blue.png" />
+        </div>
+
+        <div id="pop" style="display:none; z-index: 888887; width: 100%; position: absolute; top: 0px;left: 0px; margin: 20px 0 20px 0;">
+            <div class="container">
+                <div class="row" style="margin: 20px 30px 20px 30px;">
+                </div>
+            </div>
+        </div>
+
+        <div id="pop_photo" style="display:none; z-index: 888888; width: 100%; height:auto; position: absolute; top: 0px;left: 0px; margin: 5px 0 5px 0;">
+            <div class="carousel slide" imtype="pop_photo_top" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 0px; z-index: 1; max-width: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel slide" style="text-align: center;">
+                        <!--<img src="assets/img/bootstrap-mdo-sfmoma-03.jpg" alt="" />-->
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev" onClick="IM.DO_pop_photo_up()">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next" onClick="IM.DO_pop_photo_down()">›</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next" style="top:5%; height:auto;" onClick="IM.HTML_pop_photo_hide()">×</a>
+            </div>
+        </div>
+    </div>
+</body>

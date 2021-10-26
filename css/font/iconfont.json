@@ -1,0 +1,72 @@
+{
+  "id": "1557057",
+  "name": "云想",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "420489",
+      "name": "fb",
+      "font_class": "fb",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "2836498",
+      "name": "IG",
+      "font_class": "IG",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "6293352",
+      "name": "facebook",
+      "font_class": "facebook",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "6431021",
+      "name": "facebook_cir",
+      "font_class": "Facebook-small",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "7270441",
+      "name": "line",
+      "font_class": "line",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "7950754",
+      "name": "Facebook",
+      "font_class": "facebook-",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "8460380",
+      "name": "facebook",
+      "font_class": "facebook1",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "9480812",
+      "name": "line",
+      "font_class": "lineicon_gongzuoquyu",
+      "unicode": "e702",
+      "unicode_decimal": 59138
+    },
+    {
+      "icon_id": "9487321",
+      "name": "weibo",
+      "font_class": "weibo",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    }
+  ]
+}

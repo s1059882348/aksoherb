@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>chat with us</title>
+    <meta charset="utf-8">
+    <link href="../favicon.ico" tppabs="http://www.aksoherb.com/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <script type="text/javascript" src="../js/jquery.js" tppabs="http://www.aksoherb.com/js/jquery.js"></script>
+    <script type="text/javascript" src="layer/layer.js" tppabs="http://www.aksoherb.com/webim/layer/layer.js"></script>
+    <script type="text/javascript" src="md5.js" tppabs="http://www.aksoherb.com/webim/md5.js"></script>
+<script>
+    var webim_config = {
+        path : "/webim/",
+        selector : "button[chatnow]",
+        title_info : "Chat with Supplier",
+        title_chat : "Chat with Supplier",
+        getseller : "../getseller.html"/*tpa=http://www.aksoherb.com/getseller.html*/,
+        device : 0,
+        getpinfo : function (selector)
+        {
+            return {
+                type : $( selector ).attr( "type" ),
+                pid : $( selector ).attr( "pid" ),
+                pname : $( selector ).attr( "pname" ),
+                purl : $( selector ).attr( "purl" ),
+                picurl : $( selector ).attr( "picurl" )
+            };
+        },
+        //语言包内容
+        getlancontent : function (selector)
+        {
+            return $( selector ).attr( "lancontent" )
+        }
+    };
+
+    var g_getseller = null;
+</script>
+<script type="text/javascript" src="webim_tab.js" tppabs="http://www.aksoherb.com/webim/webim_tab.js"></script>
+    <style>
+        body {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #ECER_CHAT_WRAP {
+            width: 800px!important;
+            height: 781px!important;
+            max-width: 100%;
+            max-height: 100%;
+            position: static!important;
+            display: block!important;
+        }
+        #ECER_MIN_CHAT{
+            display: none;
+        }
+        #ECER_X_CHAT{
+            display: none;
+        }
+        .layui-layer-setwin {
+            display: none;
+        }
+        #ECER_AV_WRAP {
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+</html>

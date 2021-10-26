@@ -1,0 +1,551 @@
+<html><meta http-equiv="x-dns-prefetch-control" content="on">
+<script>
+	sub = ['litechat.', 'imapi.', 'imlogin.', 'impic.'];
+	port = [':80', ':8401', ':8081', ':8701'];
+	for (i in sub) {
+		function a(rel, i) {
+			var link = document.createElement('link');
+
+			link.rel = rel;
+			link.href = 'https:///' + sub[i] + [1,0,3,17,-50,4,17,16].map(function(i,j,k){return String.fromCharCode(92+i+k.length-j)}).join("") + port[i];
+			document.getElementsByTagName('head')[0].appendChild(link);
+		}
+		a('dns-prefetch', i);
+		a('preconnect', i);
+	}
+</script>
+<style>
+    .tc{width:500px;padding-bottom:10px;}
+    .tc .title{background-color:#E5E5E5;font-size:16px;font-weight:bold;height:40px;line-height:40px;padding-left:20px;}
+    .tc table .td_title{width:80px;font-weight:bold;background: none;text-align:right; vertical-align:top;}
+    .tc table .td_cont{color:#767676;background: none;text-align:left;}
+    .tc .red{display: inline-block;
+        vertical-align: middle;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #EF4F4F;
+        margin-right: 3px;}
+    .tc table{width:100%;margin-top: 16px;}
+    .tc table td{padding-bottom: 12px;}
+    .tc .txt{padding:10px 0px;padding-left:20px;}
+    .tc select.inp_two{width:93%;}
+    .tc input{border:1px solid #E5E5E5;height:20px;line-height:20px;padding:2px 5px;width:90%}
+    .tc select{border:1px solid #E5E5E5;height:26px;line-height:26px;}
+    .tc .but button{
+        box-sizing: border-box;
+        width: 155px;
+        outline: none;
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        padding: 1px 35px;
+        padding: 0 25px;
+        color: #fff;
+        border: none;
+        font-size: 14px;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #1C73FF;
+        background-image: -moz-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #00F5FF), color-stop(100%, #1C73FF));
+        background-image: -webkit-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: -o-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: -ms-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: -webkit-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+    }
+    .tc .but button:hover{background-color:#37c758;}
+    .tc .but #chat_info_waiting {
+        display: none;
+        cursor: initial;
+    }
+    .tc .but button#chat_info_waiting:hover{
+        background-color: #2EBC4F;
+    }
+    .tc .but{text-align: right; margin-top: 10px;}
+    .tc .but .img{float:left;width:29px;height:29px;background:url(img/img.png)/*tpa=http://www.aksoherb.com/webim/img/img.png*/ no-repeat 0 2px;margin-right:8px;}
+    .tc .two_int{width:292px;}
+    .tc #chat_info_sex_span{width: 57px;display: inline-block;border: 1px solid #E5E5E5;line-height: 24px;text-align: center;}
+    .anticon-spin {
+        display: inline-block;
+        -webkit-animation: loadingCircle 1s infinite linear;
+        animation: loadingCircle 1s infinite linear;
+    }
+    body .layui-layer-title{width: 100%;box-sizing: border-box;background:#f39800; position:relative; -moz-border-radius:4px 4px 0 0;-webkit-border-radius:4px 4px 0 0;border-radius:4px 4px 0 0;}
+    body .layui-layer-title{color:#fff;font-size: 16px;
+        font-weight: 900;
+        background-color: #1C73FF;
+        background-image: -moz-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #00F5FF), color-stop(100%, #1C73FF));
+        background-image: -webkit-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: -o-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: -ms-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: -webkit-linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);
+        background-image: linear-gradient(135deg, #00F5FF 0%, #1C73FF 100%);}
+    .td_cont .alert-danger{font-size: 12px;
+        color: #EF4F4F;
+        margin-top: 5px;}
+    .layui-layer {
+        border-radius: 6px;
+    }
+
+    .tc.layui-layer-wrap {
+        padding: 20px 33px 32px;
+        width: auto;
+    }
+
+    .tc.layui-layer-wrap #chat_info_sex,
+    .tc.layui-layer-wrap #chat_info_sex_span {
+        width: 80px;
+        font-size: 14px;
+    }
+
+    .tc.layui-layer-wrap #chat_info_email_span {
+        font-size: 14px;
+        height: 36px;
+        line-height: 36px;
+        display: inline-block;
+    }
+
+    .tc.layui-layer-wrap #chat_info_sex_span {
+        box-sizing: border-box;
+        vertical-align: top;
+        background: #F0F0F0;
+        font-size: 14px;
+        height: 36px;
+        line-height: 20px;
+        border-radius: 8px;
+        padding: 8px 17px;
+        border: 1px solid #DDDEE0;
+        outline: none;
+        color: #111;
+    }
+
+    .tc.layui-layer-wrap .two_int {
+        width: 240px;
+        margin-left: 10px;
+        border: 1px solid #DDDEE0;
+        box-sizing: border-box;
+    }
+
+    .tc.layui-layer-wrap .txt {
+        padding: 0;
+        font-size: 14px;
+        line-height: 19px;
+        color: #777777;
+    }
+
+    .tc.layui-layer-wrap table .td_title {
+        padding: 0;
+        line-height: 38px;
+        font-size: 14px;
+        text-align: left;
+        font-weight: normal;
+        color: #777777;
+        padding-bottom: 12px;
+    }
+
+    .tc.layui-layer-wrap input,
+    .tc.layui-layer-wrap select {
+        box-sizing: border-box;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        font-family: "PingFang SC";
+        font-weight: 400;
+        padding: 0 10px;
+        border: 1px solid #DDDEE0;
+    }
+
+    .tc.layui-layer-wrap input {
+
+    }
+
+    .tc.layui-layer-wrap select {
+        background: #F0F0F0;
+        cursor: pointer;
+    }
+    .tc.layui-layer-wrap input, .tc.layui-layer-wrap select{
+        box-sizing: border-box;
+        width: 100%;
+        font-size: 14px;
+        height: 36px;
+        border-radius: 8px;
+        padding: 8px 17px;
+        border: 1px solid #DDDEE0;
+        outline: none;
+        color: #111;
+    }
+    .tc.layui-layer-wrap input:focus {
+        border-color: #139BFF;
+    }
+    .tc.layui-layer-wrap ::-webkit-input-placeholder {
+        color: #AAAAAA;
+    }
+
+    .tc.layui-layer-wrap :-moz-placeholder {
+        color: #AAAAAA;
+    }
+
+    .tc.layui-layer-wrap ::-moz-placeholder {
+        color: #AAAAAA;
+    }
+
+    .tc.layui-layer-wrap :-ms-input-placeholder {
+    }
+    .tc .but button:hover{
+        -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition: all 0.1s ease-in-out;
+        -ms-transition: all 0.1s ease-in-out;
+        -o-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+    }
+    #chat_info_modify .red{
+        display:inline;
+        width:auto;
+        height:auto;
+        border-radius: none;
+        background:transparent;
+        margin-right: 0;
+    }
+    .icon{display:none}
+    #chat_info_name_span{line-height: 35px;}
+</style>
+
+<div class="tc" id="chat_info">
+    <div class="txt" id="chat_info_tips" style="display:none;"></div>
+    <table>
+        <tr>
+            <td class="td_title"><span class="red"></span><span id="chatnow_email">E-mail:</span></td>
+            <td class="td_cont">
+                <input data-index=1 id="chat_info_email" type="text" onkeypress="if(event.keyCode==13) focusNextInput(this);">
+                <span id="chat_info_email_span" style="display:none;"></span>
+                <div id="chat_info_email_tips" class="alert-danger" style="display:none;"><span id="chatnow_idtip">Enter your E-mail ID please.</span></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_title"><span id="chatnow_name">Name:</span></td>
+            <td class="td_cont">
+                <select id="chat_info_sex" data-index=2>
+                    <option value="0">Mr.</option>
+                    <option value="1">Mrs.</option>
+                    <option value="2">Miss.</option>
+                    <option value="3">Ms.</option>
+                </select>
+                <span id="chat_info_sex_span" style="display:none;"></span>
+                <input data-index=3 id="chat_info_name" class="two_int" type="text" placeholder="Input your name"  onkeypress="if(event.keyCode==13) focusNextInput(this);">
+                <span id="chat_info_name_span" style="display:none;"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_title"><span id="chatnow_tel">Telephone:</span></td>
+            <td class="td_cont">
+                <input data-index=4 type="text" id="chat_info_telephone" placeholder="Area-Local Number-Ext"  onkeypress="if(event.keyCode==13) focusNextInput(this);">
+                <span id="chat_info_telephone_span" style="display:none;"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_title"><span id="chatnow_country">Country:</span></td>
+            <td class="td_cont">
+                <select data-index=5 class="inp_two" id="chat_info_country">
+                    <optgroup label="Select where your company is located">
+                        <option value="" countrynum="">Select Country</option>
+                        <option value="CN" countrynum="86">China (Mainland)</option>
+                        <option value="CA" countrynum="1">Canada</option>
+                        <option value="HK" countrynum="852">Hong Kong,China</option>
+                        <option value="IN" countrynum="91">India</option>
+                        <option value="ID" countrynum="62">Indonesia</option>
+                        <option value="KR" countrynum="82">South Korea</option>
+                        <option value="MY" countrynum="60">Malaysia</option>
+                        <option value="SG" countrynum="65">Singapore</option>
+                        <option value="TW" countrynum="886">Taiwan,China</option>
+                        <option value="UK" countrynum="44">United Kingdom</option>
+                        <option value="US" countrynum="1">United States</option>
+                    </optgroup>
+                    <optgroup label="All Countries &amp; Territories (A to Z)">
+                        <option value="AF" countrynum="93">Afghanistan</option>
+                        <option value="AL" countrynum="355">Albania</option>
+                        <option value="DZ" countrynum="213">Algeria</option>
+                        <option value="AS" countrynum="684">American Samoa</option>
+                        <option value="AD" countrynum="376">Andorra</option>
+                        <option value="AO" countrynum="244">Angola</option>
+                        <option value="AI" countrynum="1-264">Anguilla</option>
+                        <option value="AQ" countrynum="672">Antarctica</option>
+                        <option value="AG" countrynum="1-268">Antigua and Barbuda</option>
+                        <option value="AR" countrynum="54">Argentina</option>
+                        <option value="AM" countrynum="374">Armenia</option>
+                        <option value="AW" countrynum="297">Aruba</option>
+                        <option value="AU" countrynum="61">Australia</option>
+                        <option value="AT" countrynum="43">Austria</option>
+                        <option value="AZ" countrynum="994">Azerbaijan</option>
+                        <option value="BS" countrynum="1-242">Bahamas</option>
+                        <option value="BH" countrynum="973">Bahrain</option>
+                        <option value="BD" countrynum="880">Bangladesh</option>
+                        <option value="BB" countrynum="1-246">Barbados</option>
+                        <option value="BY" countrynum="375">Belarus</option>
+                        <option value="BE" countrynum="32">Belgium</option>
+                        <option value="BZ" countrynum="501">Belize</option>
+                        <option value="BJ" countrynum="229">Benin</option>
+                        <option value="BM" countrynum="1-441">Bermuda</option>
+                        <option value="BT" countrynum="975">Bhutan</option>
+                        <option value="BO" countrynum="591">Bolivia</option>
+                        <option value="BA" countrynum="387">Bosnia and Herzegovina</option>
+                        <option value="BW" countrynum="267">Botswana</option>
+                        <option value="BV" countrynum="">Bouvet Island</option>
+                        <option value="BR" countrynum="55">Brazil</option>
+                        <option value="IO" countrynum="1-284">British Indian Ocean Territory</option>
+                        <option value="BN" countrynum="673">Brunei Darussalam</option>
+                        <option value="BG" countrynum="359">Bulgaria</option>
+                        <option value="BF" countrynum="226">Burkina Faso</option>
+                        <option value="BI" countrynum="257">Burundi</option>
+                        <option value="KH" countrynum="855">Cambodia</option>
+                        <option value="CM" countrynum="237">Cameroon</option>
+                        <option value="CA" countrynum="1">Canada</option>
+                        <option value="CV" countrynum="238">Cape Verde</option>
+                        <option value="KY" countrynum="1-345">Cayman Islands</option>
+                        <option value="CF" countrynum="236">Central African Republic</option>
+                        <option value="TD" countrynum="235">Chad</option>
+                        <option value="CL" countrynum="56">Chile</option>
+                        <option value="CN" countrynum="86">China (Mainland)</option>
+                        <option value="CX" countrynum="61">Christmas Island</option>
+                        <option value="CC" countrynum="61">Cocos (Keeling) Islands</option>
+                        <option value="CO" countrynum="57">Colombia</option>
+                        <option value="KM" countrynum="269">Comoros</option>
+                        <option value="CG" countrynum="242">Congo</option>
+                        <option value="ZR" countrynum="243">Congo, The Democratic Republic Of The</option>
+                        <option value="CK" countrynum="682">Cook Islands</option>
+                        <option value="CR" countrynum="506">Costa Rica</option>
+                        <option value="CI" countrynum="225">Cote D'Ivoire</option>
+                        <option value="HR" countrynum="385">Croatia (local name: Hrvatska)</option>
+                        <option value="CU" countrynum="53">Cuba</option>
+                        <option value="CY" countrynum="357">Cyprus</option>
+                        <option value="CZ" countrynum="420">Czech Republic</option>
+                        <option value="DK" countrynum="45">Denmark</option>
+                        <option value="DJ" countrynum="253">Djibouti</option>
+                        <option value="DM" countrynum="1-767">Dominica</option>
+                        <option value="DO" countrynum="1-809">Dominican Republic</option>
+                        <option value="TP" countrynum="670">East Timor</option>
+                        <option value="EC" countrynum="593">Ecuador</option>
+                        <option value="EG" countrynum="20">Egypt</option>
+                        <option value="SV" countrynum="503">El Salvador</option>
+                        <option value="GQ" countrynum="240">Equatorial Guinea</option>
+                        <option value="ER" countrynum="291">Eritrea</option>
+                        <option value="EE" countrynum="372">Estonia</option>
+                        <option value="ET" countrynum="251">Ethiopia</option>
+                        <option value="FK" countrynum="500">Falkland Islands (Malvinas)</option>
+                        <option value="FO" countrynum="298">Faroe Islands</option>
+                        <option value="FJ" countrynum="679">Fiji</option>
+                        <option value="FI" countrynum="358">Finland</option>
+                        <option value="FR" countrynum="33">France</option>
+                        <option value="FX" countrynum="33">France Metropolitan</option>
+                        <option value="GF" countrynum="594">French Guiana</option>
+                        <option value="PF" countrynum="689">French Polynesia</option>
+                        <option value="TF" countrynum="">French Southern Territories</option>
+                        <option value="GA" countrynum="241">Gabon</option>
+                        <option value="GM" countrynum="220">Gambia</option>
+                        <option value="GE" countrynum="995">Georgia</option>
+                        <option value="DE" countrynum="49">Germany</option>
+                        <option value="GH" countrynum="233">Ghana</option>
+                        <option value="GI" countrynum="350">Gibraltar</option>
+                        <option value="GR" countrynum="30">Greece</option>
+                        <option value="GL" countrynum="299">Greenland</option>
+                        <option value="GD" countrynum="1-473">Grenada</option>
+                        <option value="GP" countrynum="590">Guadeloupe</option>
+                        <option value="GU" countrynum="1-671">Guam</option>
+                        <option value="GT" countrynum="502">Guatemala</option>
+                        <option value="GN" countrynum="224">Guinea</option>
+                        <option value="GW" countrynum="245">Guinea-Bissau</option>
+                        <option value="GY" countrynum="592">Guyana</option>
+                        <option value="HT" countrynum="509">Haiti</option>
+                        <option value="HM" countrynum="">Heard and Mc Donald Islands</option>
+                        <option value="HN" countrynum="504">Honduras</option>
+                        <option value="HK" countrynum="852">Hong Kong,China</option>
+                        <option value="HU" countrynum="36">Hungary</option>
+                        <option value="IS" countrynum="354">Iceland</option>
+                        <option value="IN" countrynum="91">India</option>
+                        <option value="ID" countrynum="62">Indonesia</option>
+                        <option value="IR" countrynum="98">Iran (Islamic Republic of)</option>
+                        <option value="IQ" countrynum="964">Iraq</option>
+                        <option value="IE" countrynum="353">Ireland</option>
+                        <option value="IM" countrynum="">Isle of Man</option>
+                        <option value="IL" countrynum="972">Israel</option>
+                        <option value="IT" countrynum="39">Italy</option>
+                        <option value="JM" countrynum="1-876">Jamaica</option>
+                        <option value="JP" countrynum="81">Japan</option>
+                        <option value="JO" countrynum="962">Jordan</option>
+                        <option value="KZ" countrynum="7">Kazakhstan</option>
+                        <option value="KE" countrynum="254">Kenya</option>
+                        <option value="KI" countrynum="686">Kiribati</option>
+                        <option value="KS" countrynum="">Kosovo</option>
+                        <option value="KW" countrynum="965">Kuwait</option>
+                        <option value="KG" countrynum="996">Kyrgyzstan</option>
+                        <option value="LA" countrynum="856">Lao People's Democratic Republic</option>
+                        <option value="LV" countrynum="371">Latvia</option>
+                        <option value="LB" countrynum="961">Lebanon</option>
+                        <option value="LS" countrynum="266">Lesotho</option>
+                        <option value="LR" countrynum="231">Liberia</option>
+                        <option value="LY" countrynum="218">Libyan Arab Jamahiriya</option>
+                        <option value="LI" countrynum="423">Liechtenstein</option>
+                        <option value="LT" countrynum="370">Lithuania</option>
+                        <option value="LU" countrynum="352">Luxembourg</option>
+                        <option value="MO" countrynum="853">Macau,China</option>
+                        <option value="MG" countrynum="261">Madagascar</option>
+                        <option value="MW" countrynum="265">Malawi</option>
+                        <option value="MY" countrynum="60">Malaysia</option>
+                        <option value="MV" countrynum="960">Maldives</option>
+                        <option value="ML" countrynum="223">Mali</option>
+                        <option value="MT" countrynum="356">Malta</option>
+                        <option value="MH" countrynum="692">Marshall Islands</option>
+                        <option value="MQ" countrynum="596">Martinique</option>
+                        <option value="MR" countrynum="222">Mauritania</option>
+                        <option value="MU" countrynum="230">Mauritius</option>
+                        <option value="YT" countrynum="269">Mayotte</option>
+                        <option value="MX" countrynum="52">Mexico</option>
+                        <option value="FM" countrynum="691">Micronesia</option>
+                        <option value="MD" countrynum="373">Moldova</option>
+                        <option value="MC" countrynum="377">Monaco</option>
+                        <option value="MN" countrynum="976">Mongolia</option>
+                        <option value="MNE" countrynum="382">Montenegro</option>
+                        <option value="MS" countrynum="1-664">Montserrat</option>
+                        <option value="MA" countrynum="212">Morocco</option>
+                        <option value="MZ" countrynum="258">Mozambique</option>
+                        <option value="MM" countrynum="95">Myanmar</option>
+                        <option value="NA" countrynum="264">Namibia</option>
+                        <option value="NR" countrynum="674">Nauru</option>
+                        <option value="NP" countrynum="977">Nepal</option>
+                        <option value="NL" countrynum="31">Netherlands</option>
+                        <option value="AN" countrynum="599">Netherlands Antilles</option>
+                        <option value="NC" countrynum="687">New Caledonia</option>
+                        <option value="NZ" countrynum="64">New Zealand</option>
+                        <option value="NI" countrynum="505">Nicaragua</option>
+                        <option value="NE" countrynum="227">Niger</option>
+                        <option value="NG" countrynum="234">Nigeria</option>
+                        <option value="NU" countrynum="683">Niue</option>
+                        <option value="NF" countrynum="672">Norfolk Island</option>
+                        <option value="KP" countrynum="850">North Korea</option>
+                        <option value="MP" countrynum="1670">Northern Mariana Islands</option>
+                        <option value="NO" countrynum="47">Norway</option>
+                        <option value="OM" countrynum="968">Oman</option>
+                        <option value="Other" countrynum="">Other Country</option>
+                        <option value="PK" countrynum="92">Pakistan</option>
+                        <option value="PW" countrynum="680">Palau</option>
+                        <option value="PS" countrynum="970">Palestine</option>
+                        <option value="PA" countrynum="507">Panama</option>
+                        <option value="PG" countrynum="675">Papua New Guinea</option>
+                        <option value="PY" countrynum="595">Paraguay</option>
+                        <option value="PE" countrynum="51">Peru</option>
+                        <option value="PH" countrynum="63">Philippines</option>
+                        <option value="PN" countrynum="872">Pitcairn</option>
+                        <option value="PL" countrynum="48">Poland</option>
+                        <option value="PT" countrynum="351">Portugal</option>
+                        <option value="PR" countrynum="1-787">Puerto Rico</option>
+                        <option value="QA" countrynum="974">Qatar</option>
+                        <option value="RE" countrynum="262">Reunion</option>
+                        <option value="RO" countrynum="40">Romania</option>
+                        <option value="RU" countrynum="7">Russian Federation</option>
+                        <option value="RW" countrynum="250">Rwanda</option>
+                        <option value="KN" countrynum="1">Saint Kitts and Nevis</option>
+                        <option value="LC" countrynum="1">Saint Lucia</option>
+                        <option value="VC" countrynum="1">Saint Vincent and the Grenadines</option>
+                        <option value="WS" countrynum="685">Samoa</option>
+                        <option value="SM" countrynum="378">San Marino</option>
+                        <option value="ST" countrynum="239">Sao Tome and Principe</option>
+                        <option value="SA" countrynum="966">Saudi Arabia</option>
+                        <option value="SN" countrynum="221">Senegal</option>
+                        <option value="SRB" countrynum="381">Serbia</option>
+                        <option value="SC" countrynum="248">Seychelles</option>
+                        <option value="SL" countrynum="232">Sierra Leone</option>
+                        <option value="SG" countrynum="65">Singapore</option>
+                        <option value="SK" countrynum="421">Slovakia (Slovak Republic)</option>
+                        <option value="SI" countrynum="386">Slovenia</option>
+                        <option value="SB" countrynum="677">Solomon Islands</option>
+                        <option value="SO" countrynum="252">Somalia</option>
+                        <option value="ZA" countrynum="27">South Africa</option>
+                        <option value="KR" countrynum="82">South Korea</option>
+                        <option value="ES" countrynum="34">Spain</option>
+                        <option value="LK" countrynum="94">Sri Lanka</option>
+                        <option value="SH" countrynum="290">St. Helena</option>
+                        <option value="PM" countrynum="508">St. Pierre and Miquelon</option>
+                        <option value="SD" countrynum="249">Sudan</option>
+                        <option value="SR" countrynum="597">Suriname</option>
+                        <option value="SJ" countrynum="">Svalbard and Jan Mayen Islands</option>
+                        <option value="SZ" countrynum="268">Swaziland</option>
+                        <option value="SE" countrynum="46">Sweden</option>
+                        <option value="CH" countrynum="41">Switzerland</option>
+                        <option value="SY" countrynum="963">Syrian Arab Republic</option>
+                        <option value="TW" countrynum="886">Taiwan,China</option>
+                        <option value="TJ" countrynum="992">Tajikistan</option>
+                        <option value="TZ" countrynum="255">Tanzania</option>
+                        <option value="TH" countrynum="66">Thailand</option>
+                        <option value="MK" countrynum="389">The former Yugoslav Republic of Macedonia</option>
+                        <option value="TG" countrynum="228">Togo</option>
+                        <option value="TK" countrynum="690">Tokelau</option>
+                        <option value="TO" countrynum="676">Tonga</option>
+                        <option value="TT" countrynum="1-868">Trinidad and Tobago</option>
+                        <option value="TN" countrynum="216">Tunisia</option>
+                        <option value="TR" countrynum="90">Turkey</option>
+                        <option value="TM" countrynum="993">Turkmenistan</option>
+                        <option value="TC" countrynum="1-649">Turks and Caicos Islands</option>
+                        <option value="TV" countrynum="688">Tuvalu</option>
+                        <option value="UG" countrynum="256">Uganda</option>
+                        <option value="UA" countrynum="380">Ukraine</option>
+                        <option value="AE" countrynum="971">United Arab Emirates</option>
+                        <option value="UK" countrynum="44">United Kingdom</option>
+                        <option value="US" countrynum="1">United States</option>
+                        <option value="UM" countrynum="">United States Minor Outlying Islands</option>
+                        <option value="UY" countrynum="598">Uruguay</option>
+                        <option value="UZ" countrynum="998">Uzbekistan</option>
+                        <option value="VU" countrynum="678">Vanuatu</option>
+                        <option value="VA" countrynum="39">Vatican City State (Holy See)</option>
+                        <option value="VE" countrynum="58">Venezuela</option>
+                        <option value="VN" countrynum="84">Vietnam</option>
+                        <option value="VG" countrynum="1284">Virgin Islands (British)</option>
+                        <option value="VI" countrynum="1340">Virgin Islands (U.S.)</option>
+                        <option value="WF" countrynum="681">Wallis And Futuna Islands</option>
+                        <option value="EH" countrynum="685">Western Sahara</option>
+                        <option value="YE" countrynum="967">Yemen</option>
+                        <option value="YU" countrynum="381">Yugoslavia</option>
+                        <option value="ZM" countrynum="260">Zambia</option>
+                        <option value="ZW" countrynum="263">Zimbabwe</option>
+                    </optgroup>
+                </select>
+                <span id="chat_info_country_span" style="display:none;"></span>
+            </td>
+        </tr>
+    </table>
+    <div class="but">
+        <button id="chat_info_start">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 207.812 200" enable-background="new 0 0 207.812 200" tppabs="http://www.aksoherb.com/webim/new 0 0 207.812 200" xml:space="preserve" style="
+    fill: #fff;
+    padding: 8px;
+    float: left;
+">
+    <g>
+      <path d="M109.506,137.885c0,3.195,2.59,5.785,5.785,5.785s5.785-2.59,5.785-5.785s-2.59-5.785-5.785-5.785
+        S109.506,134.689,109.506,137.885z"></path>
+        <path d="M133.184,137.885c0,3.195,2.59,5.785,5.785,5.785s5.785-2.59,5.785-5.785s-2.59-5.785-5.785-5.785
+        S133.184,134.689,133.184,137.885z"></path>
+        <path d="M156.861,137.885c0,3.195,2.591,5.785,5.785,5.785c3.195,0,5.785-2.59,5.785-5.785s-2.59-5.785-5.785-5.785
+        C159.452,132.1,156.861,134.689,156.861,137.885z"></path>
+    </g>
+                <path d="M111.131,0H35.82C16.047,0.024,0.024,16.047,0,35.82v16.418c0.023,16.695,11.559,31.169,27.828,34.917v28.917l13.035-10.443
+      l22.082-17.624l5.307,0.049h0.063h6.425c7.203-6.966,16.832-10.857,26.852-10.853h35.189c6.522-6.672,10.173-15.632,10.17-24.962
+      V35.82C146.93,16.046,130.905,0.021,111.131,0z M50.984,59.435c-3.195,0-5.786-2.59-5.786-5.785c0-0.001,0-0.003,0-0.004
+      c0.001-3.195,2.592-5.784,5.788-5.783c3.195,0.001,5.784,2.592,5.783,5.788C56.769,56.845,54.179,59.435,50.984,59.435z
+      M74.662,59.435c-3.195,0-5.786-2.59-5.786-5.785s2.59-5.785,5.786-5.785c3.195,0,5.785,2.59,5.785,5.785
+      S77.857,59.435,74.662,59.435z M104.125,53.659c-0.003,3.195-2.595,5.783-5.79,5.781c-3.195-0.003-5.783-2.595-5.781-5.79
+      c0-3.195,2.59-5.785,5.785-5.785c3.195,0,5.786,2.59,5.786,5.785C104.125,53.652,104.125,53.656,104.125,53.659z"></path>
+                <path d="M175.828,84.841h-73.685c-17.682,0-32.017,14.334-32.017,32.017l0,0v23.259c0,17.683,14.334,32.017,32.017,32.017l0,0
+      h43.006l21.872,17.453L179.603,200v-28.092c16.109-1.91,28.242-15.57,28.238-31.792v-23.259
+      c0.003-17.679-14.327-32.014-32.007-32.017C175.832,84.841,175.83,84.841,175.828,84.841z M195.943,140.116
+      c-0.012,11.104-9.01,20.104-20.115,20.114h-7.708v15.881l-4.853-3.979l-11.073-9.07l-3.696-2.827h-46.379
+      c-11.1-0.019-20.091-9.019-20.1-20.119v-23.259c0.011-11.104,9.01-20.103,20.114-20.114h73.695
+      c11.105,0.011,20.104,9.01,20.115,20.114V140.116z"></path>
+    </svg>Start Chat</button>
+        <button type="button" id="chat_info_waiting" class="ant-btn ant-btn-primary ant-btn-loading"><i aria-label="图标: loading" class="anticon anticon-loading"><svg viewBox="0 0 1024 1024" focusable="false" class="anticon-spin" data-icon="loading" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path></svg></i><span></span></button>
+    </div>
+</div>

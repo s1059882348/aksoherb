@@ -1,0 +1,28 @@
+<html><?php
+
+/*
+ * 贸易通：
+ * APPID 8a48b5514ff923b40150034f8cea1987
+ * APPTOKEN   94a26e6cdddab14eea1331c955f1d22a
+ * 宜选网（旺站） ：
+ * APPID  aaf98f8954383ba201543c048c8e03fb
+ * APPTOKEN  d1526dd5a83d49927537cc2ef827fabd
+ */
+
+$id_token = array(
+	// 贸易通
+	"8a48b5514ff923b40150034f8cea1987" => "94a26e6cdddab14eea1331c955f1d22a",
+	// 宜选网（旺站）
+	"aaf98f8954383ba201543c048c8e03fb" => "d1526dd5a83d49927537cc2ef827fabd",
+);
+
+$appid     = $_REQUEST[ 'appid' ];
+$username  = $_REQUEST[ 'username' ];
+$timestamp = $_REQUEST[ 'timestamp' ];
+$apptoken  = $id_token[ $appid ];
+$sig       = MD5( $appid . $username . $timestamp . $apptoken );
+$rt        = array(
+	'code' => '000000',
+	'sig'  => $sig
+);
+echo $_REQUEST[ 'cb' ] . '(' . json_encode( $rt ) . ')';
