@@ -10,7 +10,8 @@
 if(!$_POST['email']){
     echo json_encode(array('error_code'=>1,'error_msg'=>"邮箱地址必填！"));exit;
 }
-echo postmail('aksoherb@hotmail.com',$_POST['subject'],$_POST['message'].'<br /> 邮箱：'.$_POST['email']);exit;
+//echo postmail('aksoherb@hotmail.com',$_POST['subject'],$_POST['message'].'<br /> 邮箱：'.$_POST['email']);exit;
+echo postmail('info@aksoherb.com',$_POST['subject'],$_POST['message'].'<br /> 邮箱：'.$_POST['email']);exit;
 
 function postmail($to,$subject = '',$body = ''){
     //$to 表示收件人地址 $subject 表示邮件标题 $body表示邮件正文
