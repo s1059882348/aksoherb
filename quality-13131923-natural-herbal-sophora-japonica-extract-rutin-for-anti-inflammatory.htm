@@ -86,7 +86,7 @@
     var message_9 = 'Hello,\r\n' + "Your" + ' ' + trim(resInfo['name']) + " meets my requirements very well." + '\r\n' + "Please send me the price, specification, and similar model will be OK." + '\r\n' + "Feel free to chat with me." + '\r\n' + "Thanks!";
     var message_10 = 'Dear,\r\n' + "I want to know more about the details and quotation of" + ' ' + trim(resInfo['name']) + '.\r\n' + "Feel free to contact me." + '\r\n' + "Regards!";
     var r = getRandom(1, 10);
-    defaulProductInfo.message = eval("message_" + r);
+    defaulProductInfo.message='';
     var g_inquirypopup = 1;
     var mytAjax = {
         post: function (url, data, fn) {
@@ -259,7 +259,7 @@
         var message_9 = 'Hello,\r\n' + "Your" + ' ' + trim(data.productName) + " meets my requirements very well." + '\r\n' + "Please send me the price, specification, and similar model will be OK." + '\r\n' + "Feel free to chat with me." + '\r\n' + "Thanks!";
         var message_10 = 'Dear,\r\n' + "I want to know more about the details and quotation of" + ' ' + trim(data.productName) + '.\r\n' + "Feel free to contact me." + '\r\n' + "Regards!";
         var r = getRandom(1, 10);
-        productInfo.message = eval("message_" + r);
+        productInfo.message='';
         productInfo.pid = data.pid;
         creatDialog(productInfo, 2)
     }
